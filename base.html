@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115892070-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-115892070-1');
+	</script>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Portfolio</title>
+	<!-- Bootstrap Core CSS -->
+	<link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="../static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<!-- Theme CSS -->
+	<link href="../static/css/portfolio.css" rel="stylesheet" id="light_styles" title="Light">
+	<link href="../static/css/dark.css" rel="stylesheet alternate" id="dark_styles" title="Dark">
+	{% block extra_head %}
+	{% endblock extra_head %}
+</head>
+
+<body id="page-top">
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+		<button type="button" class="light_bulb" id="lights" value="ON" data-toggle="tooltip" title="Toggle Nightmode"></button>
+		<div class="container">
+			{% block pagetop %}
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">kt0.org</a>
+			{% endblock pagetop %}
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+
+				{% block navbar %}
+				{% endblock navbar %}
+
+					<li class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other Projects<span class="caret"></span></a>
+						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+							<li><a class="dropdown-item" href="/charts">Charts</a></li>
+							<li><a class="dropdown-item" href="/snippets">Snippets</a></li>
+							<li role="separator" class="divider"></li>
+							<div class="dropdown-divider"></div>
+							<li class="dropdown-header">header</li>
+							<li><a class="dropdown-item disabled" id="placeholder">Placeholder</a></li>
+							<li><a class="dropdown-item" href="">One more</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		</nav>
+
+	<!-- Intro Header NOTE: This should be contained elsewhere -->
+
+	<!-- idea: https://books.google.com/books?id=WzW9BwAAQBAJ&lpg=PA85&ots=mi2Q28G7mS&dq=django%20dynamic%20navbar%20pills&pg=PA85#v=onepage&q=django%20dynamic%20navbar%20pills&f=false -->
+	<header class="masthead">
+		<div class="intro-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 mx-auto">
+						<!-- <h1 class="brand-heading"></h1> -->
+							{% block header_text %}
+							<p class="intro-text">
+								Lorem ipsum,
+								<br>dolor sit amet
+								</p>
+								<a href="#about" class="btn btn-circle js-scroll-trigger">
+								<i class="fa fa-angle-double-down animated"></i></a>
+							{% endblock header_text %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	{% block body_block %}
+	{% endblock body_block %}
+
+	<!-- Map Section -->
+	<div id="map"></div>
+	{% block footer %}
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+					<a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>
+					</div>
+					<p class="copyright">Copyright &copy; 2018</p>
+				</div>
+	</footer>
+	{% endblock footer %}
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="../static/vendor/jquery/jquery.min.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3pvtUZ7YVzHVM8H22zcxtn7muQYjywWU&"></script>
+
+	<!-- Theme JavaScript -->
+	<script src="../static/js/portfolio.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+	<script src="../static/js/vein.js"></script>
+	<script>
+
+	document.getElementById("lights").addEventListener("click", lightswitch);
+
+	function lightswitch() {
+		currentvalue = document.getElementById("lights").value;
+		// var dark = document.getElementById("dark_styles");
+		// dark.disabled = false;
+		if(currentvalue == "ON"){
+			{% if view.template_name == 'home.html'%}
+			document.getElementById("card_games").classList.replace("bg-light", "bg-dark");
+			document.getElementById("card_games").classList.add("text-white");
+			{% elif view.template_name == 'charts.html' %}
+			// updateChartItem(butthole, butthole.options.scale.gridLines, "color", "rgba(233, 236, 239, 0.45)");
+			{% else %}
+			{% endif %}
+			vein.inject('body', {'color': 'rgb(230,230,241)', 'background-color': 'rgb(35,36,41)'});
+			vein.inject('.card-body', {'background-color': 'rgb(35,36,41)'});
+			vein.inject('.content-section', {'border-top-color': 'rgb(79,80,83)'});
+			vein.inject(['a:hover','a:focus'], {'color': 'rgb(29,155,108)'});
+			vein.inject('.light_bulb', {'background': 'url("../static/img/light-bulb-white.png") no-repeat center scroll', 'background-size': '50px 50px'});
+			vein.inject(['.hljs-comment','.hljs-quote'], {'color': 'rgb(153,153,153)'});
+			vein.inject(['.hljs-variable', '.hljs-template-variable','.hljs-tag','.hljs-name','.hljs-selector-id','.hljs-selector-class','.hljs-regexp','.hljs-deletion'],
+			{
+				'color': 'rgb(242,119,122)'
+			});
+			vein.inject('.hljs', {'color': 'rgb(204,204,204)', 'background': 'rgb(45,45,45)'});
+    		document.getElementById("lights").value = "OFF";
+	  	}else{
+			{% if view.template_name == 'home.html'%}
+			document.getElementById("card_games").classList.replace("bg-dark", "bg-light");
+			document.getElementById("card_games").classList.remove("text-white");
+			{% elif view.template_name == 'charts.html' %}
+			// updateChartItem(butthole, butthole.options.scale.gridLines, "color", "rgba(40, 50, 60, 0.45)");
+			{% else %}{% endif %}
+			vein.inject('body', {'color': null, 'background-color': null});
+			vein.inject('.card-body', {'background-color': null});
+			vein.inject('.content-section', {'border-top-color': null});
+			vein.inject(['a:hover','a:focus'], {'color': 'rgb(128,0,0)'});
+			vein.inject('.light_bulb', {'background': null, 'background-size': '50px 50px'});
+			vein.inject(['.hljs-comment','.hljs-quote'], {'color': null});
+			vein.inject(['.hljs-variable', '.hljs-template-variable','.hljs-tag','.hljs-name','.hljs-selector-id','.hljs-selector-class','.hljs-regexp','.hljs-deletion'],
+			{
+				'color': null
+			});
+			vein.inject('.hljs', {'color': null, 'background': null});
+	   	document.getElementById("lights").value = "ON";
+	  	}
+	}
+
+	function updateChartItem(chart, chart_, prop, value) {
+		chart_[prop] = value;
+		chart.update();
+	}
+
+	// var chart = {
+	//     options: {
+	//         scale: {
+	//         	gridLines: {
+	//           	color: 'rgb(0,0,0)'
+	//           }
+	//         }
+	//     },
+	//     data: {
+	//         label: 'hello',
+	//     }
+	// };
+
+	function stringToProperty(obj, prop){
+	    //property not found
+	    if(typeof obj === 'undefined') return false;
+
+	    //index of next property split
+	    var _index = prop.indexOf('.')
+
+	    //property split found; recursive call
+	    if(_index > -1){
+	        //get object at property (before split), pass on remainder
+	        return stringToProperty(obj[prop.substring(0, _index)], prop.substr(_index+1));
+	    }
+
+	    //done splitting; return object
+	    return obj;
+	}
+
+	// console.log(stringToProperty(chart, 'options.scale.gridLines.color'));
+
+	</script>
+	<!-- Additional scripts should be added here-->
+	{% block scripts_and_styles %}
+	{% endblock scripts_and_styles %}
+</body>
+</html>

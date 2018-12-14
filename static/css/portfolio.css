@@ -1,0 +1,590 @@
+/*!
+ * Start Bootstrap - Grayscale v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/grayscale)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
+ */
+
+ html,body {
+     height: 100%;
+     color: #333;
+     font-family: Helvetica,Arial,sans-serif;
+     font-size: 16px;
+     font-weight: 300;
+     line-height: 24px;
+ }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    /* font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
+    font-weight: 700;
+
+    margin: 0 0 35px;
+
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+}
+
+p
+{
+    font-size: 16px;
+    line-height: 1.5;
+
+    margin: 0 0 25px;
+}
+@media (min-width: 768px)
+{
+    p
+    {
+        font-size: 18px;
+        line-height: 1.6;
+
+        margin: 0 0 35px;
+    }
+}
+
+.green a{
+	color: #42dca3;
+}
+
+a
+{
+    -webkit-transition: all .2s ease-in-out;
+       -moz-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+
+    color: #4682b4;
+}
+a:focus,
+a:hover
+{
+    color: Maroon;
+}
+
+#mainNav
+{
+	 border-top: 1px solid grey;
+
+    /* font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
+    margin-bottom: 0;
+    /* text-transform: uppercase; */
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    background-color: black;
+}
+#mainNav .navbar-toggler
+{
+    font-size: 14px;
+    padding: 11px;
+    color: white;
+    border: 1px solid white;
+}
+
+.page-header{
+	/* font-family: "Apple Chancery"; */
+	font-family: "Century Gothic";
+	border-bottom: 3px solid grey;
+	padding-bottom: 20px;
+	font-weight: 300;
+	font-size: 35pt;
+	/* Optima,Verdana */
+}
+
+
+#mainNav .navbar-nav a,
+#mainNav .navbar-brand
+{
+    color: white;
+}
+
+#mainNav .navbar-brand
+{
+    color: white;
+    /* font-weight: 600; */
+}
+#mainNav .navbar-nav a:hover,
+#mainNav .navbar-brand:hover
+{
+    color: Maroon;
+}
+
+#mainNav .navbar-nav .dropdown-item
+{
+	 color: #495057
+}
+
+#mainNav .navbar-nav .nav-item
+{
+    -webkit-transition: background .3s ease-in-out;
+       -moz-transition: background .3s ease-in-out;
+            transition: background .3s ease-in-out;
+}
+#mainNav .navbar-nav .nav-item:hover
+{
+    color: fade(white, 80%);
+    outline: none;
+    background-color: transparent;
+}
+#mainNav .navbar-nav .nav-item:active,
+#mainNav .navbar-nav .nav-item:focus
+{
+    outline: none;
+    background-color: transparent;
+}
+
+/* #about
+{
+	border-top: 12px solid white;
+
+} */
+
+/*
+#mainNav .navbar-nav li a
+{
+	 color: #333
+}
+
+#mainNav .navbar-nav .nav-item .dropdown-item li a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+  background-color: transparent;
+}
+see here when trying to fix:
+https://blackrockdigital.github.io/startbootstrap-modern-business/
+*/
+
+.dropdown-item {
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+  background-color: transparent;
+
+}
+
+@media (min-width: 992px)
+{
+    #mainNav
+    {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        -webkit-transition: background .3s ease-in-out, padding-top .3s ease-in-out, padding-bottom .3s;
+           -moz-transition: background .3s ease-in-out, padding-top .3s ease-in-out, padding-bottom .3s;
+                transition: background .3s ease-in-out, padding-top .3s ease-in-out, padding-bottom .3s;
+        letter-spacing: 1px;
+
+        border-bottom: none;
+        background: transparent;
+    }
+    #mainNav.navbar-shrink
+    {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+		  border-bottom-width: 3px;
+		  border-bottom-style: solid;
+		  border-bottom-color: rgb(187, 0, 0);
+        background: black;
+    }
+    #mainNav .nav-link.active
+    {
+        outline: none;
+        background-color: rgba(255, 255, 255, .3);
+    }
+    #mainNav .nav-link.active:hover
+    {
+        color: white;
+    }
+}
+
+.masthead
+{
+    display: table;
+
+    width: 100%;
+    height: auto;
+    padding: 200px 0;
+
+    text-align: center;
+
+    color: white;
+    background: url('../img/aurora.jpg') no-repeat center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+.masthead .intro-body
+{
+    display: table-cell;
+
+    vertical-align: middle;
+}
+.masthead .intro-body .brand-heading
+{
+    font-size: 50px;
+}
+.masthead .intro-body .intro-text
+{
+	 -webkit-text-stroke: .25px Gray;
+	 -webkit-font-smoothing: antialiased;
+    font-size: 18px;
+}
+@media (min-width: 768px)
+{
+    .masthead
+    {
+        height: 100%;
+        padding: 0;
+    }
+    .masthead .intro-body .brand-heading
+    {
+        font-size: 100px;
+    }
+    .masthead .intro-body .intro-text
+    {
+		  -webkit-text-stroke: .25px Gray;
+		  -webkit-font-smoothing: antialiased;
+		  padding-top: 20px;
+        font-size: 22px;
+    }
+}
+
+.btn-circle
+{
+    font-size: 26px;
+    line-height: 45px;
+
+    width: 55px;
+    height: 55px;
+    margin-top: 15px;
+
+    -webkit-transition: background .3s ease-in-out;
+       -moz-transition: background .3s ease-in-out;
+            transition: background .3s ease-in-out;
+
+    color: white;
+    border: 2px solid white;
+    border-radius: 100% !important;
+    background: transparent;
+}
+.btn-circle:focus,
+.btn-circle:hover
+{
+    color: white;
+    outline: none;
+    background: rgba(255, 255, 255, .1);
+}
+
+.content-section
+{
+	 border-top: 12px solid white;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.download-section
+{
+    color: white;
+    background: url('../img/space.jpg') no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
+
+#map
+{
+	 border-top: 2px solid #42dca3;
+    width: 100%;
+    height: 300px;
+}
+
+@media (min-width: 992px)
+{
+    .content-section
+    {
+        padding-top: 200px;
+        padding-bottom: 200px;
+    }
+    #map
+    {
+        height: 350px;
+    }
+}
+
+.btn
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+
+    -webkit-transition: all .3s ease-in-out;
+       -moz-transition: all .3s ease-in-out;
+            transition: all .3s ease-in-out;
+    text-transform: uppercase;
+
+    border-radius: 0;
+}
+
+.btn-default
+{
+    color: #42dca3;
+    border: 1px solid #42dca3;
+    background-color: transparent;
+}
+.btn-default:focus,
+.btn-default:hover
+{
+    color: black;
+    border: 1px solid #42dca3;
+    outline: none;
+    background-color: #42dca3;
+}
+
+ul.banner-social-buttons
+{
+    margin-top: 0;
+}
+@media (max-width: 1199px)
+{
+    ul.banner-social-buttons
+    {
+        margin-top: 15px;
+    }
+}
+@media (max-width: 767px)
+{
+    ul.banner-social-buttons li
+    {
+        display: block;
+
+        margin-bottom: 20px;
+        padding: 0;
+    }
+    ul.banner-social-buttons li:last-child
+    {
+        margin-bottom: 0;
+    }
+}
+
+footer
+{
+	 font-weight: 50;
+	 /* color: rgb(68, 68, 68); */
+	 border-top: 12px solid black;
+	 /* border-top-color: rgb(68, 68, 68); */
+    padding: 50px 0;
+	 /* background-color: inherit; */
+}
+footer p
+{
+    font-size: 14px;
+    margin: 0;
+}
+
+footer ul
+{
+	list-style-type: none;
+	float:left;
+	width: 50%;
+}
+
+footer-logo
+{
+	float:left;
+	width: 25%;
+}
+
+footer p
+{
+	padding-top: 30px;
+}
+
+.copyright
+{
+	max-width: 80%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.django-logo {
+	background: url('../img/django_logo.png') no-repeat left center;
+	height: 150px;
+	width: 150px;
+}
+.thanks {
+
+    font-size: 12px;
+    font-size: 1.0rem;
+    color: #2B8C67;
+    margin: 0;
+    padding: 0
+}
+
+::-moz-selection
+{
+	 background: rgb(179, 215, 253);
+    /* background: #fcfcfc;
+    background: rgba(255, 255, 255, .2); */
+    text-shadow: none;
+
+}
+
+::selection
+{
+	 background: rgb(179, 215, 253);
+    /* background: #fcfcfc;
+    background: rgba(255, 255, 255, .2); */
+    text-shadow: none;
+}
+
+img::selection
+{
+    background: transparent;
+}
+
+img::-moz-selection
+{
+    background: transparent;
+}
+
+body
+{
+    -webkit-tap-highlight-color: rgba(255, 255, 255, .2);
+	 background: rgb(250, 250, 250);
+	 /* background-color: #f2f2f2; */
+}
+
+canvas
+{
+	/* border-left: 6px solid #42dca3; */
+	border-style: solid;
+	border-width: 3px 0px 3px 6px;
+	border-color:  #737373 #737373 #737373 #4d4d4d;
+	background: inherit;
+}
+
+.light_bulb
+{
+	cursor: pointer;
+	background: url('../img/lightbulb_on.svg') no-repeat center scroll;
+	width: 50px;
+	height: 50px;
+	background-size: 50px 50px;
+	border: None;
+}
+
+.fancy
+{
+	font-family: "Edwardian Script ITC", cursive;
+}
+/*
+
+Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: rgb(240,240,240);
+}
+
+
+/* Base color: saturation 0; */
+
+.hljs,
+.hljs-subst {
+  color: rgb(68,68,68);
+}
+
+.hljs-comment {
+  /* color: #888888; */
+  color: rgb(136,136,136);
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+
+
+/* User color: hue: 0 */
+
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: rgb(136,0,0);
+}
+
+.hljs-title,
+.hljs-section {
+  color: rgb(136,0,0);
+  font-weight: bold;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  /* color: #BC6060; */
+  color: rgb(188,96,96);
+}
+
+
+/* Language color: hue: 90; */
+
+.hljs-literal {
+  /* color: #78A960; */
+  color: rgb(120,169,96);
+}
+
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  /* color: #397300; */
+  color: rgb(57,115,0);
+}
+
+
+/* Meta color: hue: 200 */
+
+.hljs-meta {
+  color: rgb(31,113,153);
+}
+
+.hljs-meta-string {
+  /* color: #4d99bf; */
+  color: rgb(77,153,191);
+}
+
+
+/* Misc effects */
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
