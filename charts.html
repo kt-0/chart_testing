@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ppg<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,7 +47,10 @@
 
 				{% block navbar %}
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#chart{{forloop.counter}}">Chart{{ forloop.counter }}</a>
+					<a class="nav-link js-scroll-trigger" href="#ppg">Chart{{ forloop.counter }}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#win_perc">Chart{{ forloop.counter }}</a>
 				</li>
 				{% endblock navbar %}
 
@@ -77,14 +80,14 @@
 				<div class="row">
 					<div class="col-lg-8 mx-auto">
 						<!-- <h1 class="brand-heading"></h1> -->
-							{% block header_text %}
-							<p class="intro-text">
-								Lorem ipsum,
-								<br>dolor sit amet
-								</p>
-								<a href="#about" class="btn btn-circle js-scroll-trigger">
-								<i class="fa fa-angle-double-down animated"></i></a>
-							{% endblock header_text %}
+						{% block header_text %}
+						<p class="intro-text">
+							Charts!
+							<br>WoW!
+							</p>
+							<a href="#chart1" class="btn btn-circle js-scroll-trigger">
+							<i class="fa fa-angle-double-down animated"></i></a>
+						{% endblock header_text %}
 					</div>
 				</div>
 			</div>
@@ -92,6 +95,22 @@
 	</header>
 
 	{% block body_block %}
+		{% for chart in charts %}
+				<section id="chart{{forloop.counter}}" class="content-section text-center">
+					<div class="container">
+						<div class="row">
+							<!-- changing this changes the size of the chart -->
+							<div class="col-lg-8 mx-auto">
+								<!-- these width and height variables seem to be ignored in favor of the above -->
+								<canvas id="ppg" width="800" height="500"></canvas>
+							</div>
+						</div>
+					</div>
+				</section>
+		{% endfor %}
+	<div class="container">
+		<p>All charts created using <a href="http://www.chartjs.org/docs/">chart.js</a></p>
+	</div>
 	{% endblock body_block %}
 
 	<!-- Map Section -->
@@ -212,112 +231,64 @@
 
 	</script>
 	<!-- Additional scripts should be added here-->
-	{% block scripts_and_styles %}
-	{% endblock scripts_and_styles %}
+		<script src="/static/js/Chart.min.js"></script>
+		<script>
+		// {% for chart in charts %}
+			var ctx1 = document.getElementById("ppg");
+			var ppg = new Chart(ctx1, {
+				"type": "bar",
+				"data": {
+					//
+					"labels": ['red','blue','green'],
+					"datasets": [{
+						"label": "ppg_label",
+						"data": [12.5, 13.1, 8.9],
+						// {% if chart.chart_type == "line" %}
+						// "fill":false,
+						// "borderColor":"rgb(75, 192, 192)",
+						// "lineTension":0.5,
+						// {% elif chart.chart_type == "doughnut" or "polarArea" %}
+						"backgroundColor": ['rgba(75, 192, 192, 0.5)', 'rgba(153,102,255,0.5)', 'rgba(255, 159, 64, 0.5)'],
+						// {% else %}
+						"borderColor": ['rgb(75, 192, 192)', 'rgb(153,102,255)', 'rgb(255, 159, 64)'],
+						"borderWidth": 1,
+						// {% endif %}
+					}],
+				},
+				options: {
+					title: {
+						display: true,
+						position: "bottom",
+						text: "ppg_title",
+					},
+					// {% if chart.chart_type == "bar" %}
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero:true
+							},
+						}]
+					},
+					// {% elif chart.chart_type == "polarArea" %}
+					// scale: {
+					// 	gridLines: {
+					// 		color: "rgb(0, 0, 0)"
+					// 	}
+					// },
+					// {% else %}
+					// {% endif %}
+				},
+
+			});
+			// <button id="randomizeData">Randomize Data</button>
+			// <button id="addDataset">Add Dataset</button>
+			// <button id="removeDataset">Remove Dataset</button>
+			// <button id="addData">Add Data</button>
+			// <button id="removeData">Remove Data</button>
+		// {% endfor %}
+		</script>
+		<script>$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		})</script>
 </body>
 </html>
-
-
-
-{% extends 'base.html' %}
-
-
-
-{% block navbar %}
-	{% for chart in charts %}
-			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#chart{{forloop.counter}}">Chart{{ forloop.counter }}</a>
-			</li>
-	{% endfor %}
-{% endblock navbar %}
-
-{% block header_text %}
-<p class="intro-text">
-	Charts!
-	<br>WoW!
-	</p>
-	<a href="#chart1" class="btn btn-circle js-scroll-trigger">
-	<i class="fa fa-angle-double-down animated"></i></a>
-{% endblock header_text %}
-
-{% block body_block %}
-	{% for chart in charts %}
-			<section id="chart{{forloop.counter}}" class="content-section text-center">
-				<div class="container">
-					<div class="row">
-						<!-- changing this changes the size of the chart -->
-						<div class="col-lg-8 mx-auto">
-							<!-- these width and height variables seem to be ignored in favor of the above -->
-							<canvas id="{{chart.name}}" width="800" height="500"></canvas>
-						</div>
-					</div>
-				</div>
-			</section>
-	{% endfor %}
-<div class="container">
-	<p>All charts created using <a href="http://www.chartjs.org/docs/">chart.js</a></p>
-</div>
-{% endblock body_block %}
-
-{% block scripts_and_styles %}
-	<script src="/static/js/Chart.min.js"></script>
-	<script>
-	{% for chart in charts %}
-		var ctx{{forloop.counter}} = document.getElementById("{{chart.name}}");
-		var {{chart.name}} = new Chart(ctx{{forloop.counter}}, {
-			"type": "{{chart.chart_type}}",
-			"data": {
-				//
-				"labels": {{chart.labels|safe}},
-				"datasets": [{
-					"label": "{{chart.title}}",
-					"data": {{chart.datas}},
-					{% if chart.chart_type == "line" %}
-					"fill":false,
-					"borderColor":"rgb(75, 192, 192)",
-					"lineTension":0.5,
-					{% elif chart.chart_type == "doughnut" or "polarArea" %}
-					"backgroundColor": {{chart.bg_colors|safe}},
-					{% else %}
-					"backgroundColor": {{chart.bg_colors|safe}},
-					"borderColor": {{chart.bord_colors|safe}},
-					"borderWidth": 1,
-					{% endif %}
-				}],
-			},
-			options: {
-				title: {
-					display: true,
-					position: "bottom",
-					text: {% if chart.title != "title" %}"{{chart.title}}"{% else %}"{{chart.name|safe}}"{% endif %}
-				},
-				{% if chart.chart_type == "bar" %}
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero:true
-						},
-					}]
-				},
-				{% elif chart.chart_type == "polarArea" %}
-				// scale: {
-				// 	gridLines: {
-				// 		color: "rgb(0, 0, 0)"
-				// 	}
-				// },
-				{% else %}
-				{% endif %}
-			},
-
-		});
-		// <button id="randomizeData">Randomize Data</button>
-		// <button id="addDataset">Add Dataset</button>
-		// <button id="removeDataset">Remove Dataset</button>
-		// <button id="addData">Add Data</button>
-		// <button id="removeData">Remove Data</button>
-	{% endfor %}
-	</script>
-	<script>$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})</script>
-{% endblock scripts_and_styles %}
