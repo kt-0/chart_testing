@@ -1,4 +1,4 @@
-ppg<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,18 +18,18 @@ ppg<!DOCTYPE html>
 	<meta name="author" content="">
 	<title>Portfolio</title>
 	<!-- Bootstrap Core CSS -->
-	<link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
-	<link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
 	<!-- Theme CSS -->
-	<link href="/static/css/portfolio.css" rel="stylesheet" id="light_styles" title="Light">
-	<link href="/static/css/dark.css" rel="stylesheet alternate" id="dark_styles" title="Dark">
-	{% block extra_head %}
-	{% endblock extra_head %}
+	<link href="static/css/portfolio.css" rel="stylesheet" id="light_styles" title="Light">
+	<link href="static/css/dark.css" rel="stylesheet alternate" id="dark_styles" title="Dark">
+	<!-- {% block extra_head %}
+	{% endblock extra_head %} -->
 </head>
 
 <body id="page-top">
@@ -45,14 +45,14 @@ ppg<!DOCTYPE html>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 
-				{% block navbar %}
+				<!-- {% block navbar %} -->
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#ppg">Chart{{ forloop.counter }}</a>
+					<a class="nav-link js-scroll-trigger" href="#ppg">ppg</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="#win_perc">Chart{{ forloop.counter }}</a>
+					<a class="nav-link js-scroll-trigger" href="#december">december</a>
 				</li>
-				{% endblock navbar %}
+				<!-- {% endblock navbar %} -->
 
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Other Projects<span class="caret"></span></a>
@@ -80,23 +80,23 @@ ppg<!DOCTYPE html>
 				<div class="row">
 					<div class="col-lg-8 mx-auto">
 						<!-- <h1 class="brand-heading"></h1> -->
-						{% block header_text %}
+						<!-- {% block header_text %} -->
 						<p class="intro-text">
 							Charts!
 							<br>WoW!
 							</p>
 							<a href="#chart1" class="btn btn-circle js-scroll-trigger">
 							<i class="fa fa-angle-double-down animated"></i></a>
-						{% endblock header_text %}
+						<!-- {% endblock header_text %} -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	{% block body_block %}
-		{% for chart in charts %}
-				<section id="chart{{forloop.counter}}" class="content-section text-center">
+	<!-- {% block body_block %} -->
+		<!-- {% for chart in charts %} -->
+				<section id="chart1" class="content-section text-center">
 					<div class="container">
 						<div class="row">
 							<!-- changing this changes the size of the chart -->
@@ -107,41 +107,64 @@ ppg<!DOCTYPE html>
 						</div>
 					</div>
 				</section>
-		{% endfor %}
+				<section id="chart2" class="content-section text-center">
+					<div class="container">
+						<div class="row">
+							<!-- changing this changes the size of the chart -->
+							<div class="col-lg-8 mx-auto">
+								<!-- these width and height variables seem to be ignored in favor of the above -->
+								<canvas id="december" width="800" height="500"></canvas>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="chart3" class="content-section text-center">
+					<div class="container">
+						<div class="row">
+							<!-- changing this changes the size of the chart -->
+							<div class="col-lg-8 mx-auto">
+								<!-- these width and height variables seem to be ignored in favor of the above -->
+								<canvas id="days" width="800" height="500"></canvas>
+							</div>
+						</div>
+					</div>
+				</section>
+		<!-- {% endfor %} -->
 	<div class="container">
 		<p>All charts created using <a href="http://www.chartjs.org/docs/">chart.js</a></p>
 	</div>
-	{% endblock body_block %}
+	<!-- {% endblock body_block %} -->
 
 	<!-- Map Section -->
 	<div id="map"></div>
-	{% block footer %}
+	<!-- {% block footer %} -->
 	<!-- Footer -->
 	<footer>
 		<div class="container">
 			<div class="row">
 					<a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>
 					</div>
-					<p class="copyright">Copyright &copy; 2018</p>irfenujirnvtdtgignl
+					<p class="copyright">Copyright &copy; 2018</p>
 				</div>
 	</footer>
-	{% endblock footer %}
+	<!-- {% endblock footer %} -->
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="/static/vendor/jquery/jquery.min.js"></script>
-	<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="static/vendor/jquery/jquery.min.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3pvtUZ7YVzHVM8H22zcxtn7muQYjywWU&"></script>
 
 	<!-- Theme JavaScript -->
-	<script src="/static/js/portfolio.js"></script>
+	<script src="static/js/portfolio.js"></script>
+	<script src="static/js/moment-with-locales.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
-	<script src="/static/js/vein.js"></script>
+	<script src="static/js/vein.js"></script>
 	<script>
 
 	document.getElementById("lights").addEventListener("click", lightswitch);
@@ -151,18 +174,18 @@ ppg<!DOCTYPE html>
 		// var dark = document.getElementById("dark_styles");
 		// dark.disabled = false;
 		if(currentvalue == "ON"){
-			{% if view.template_name == 'home.html'%}
-			document.getElementById("card_games").classList.replace("bg-light", "bg-dark");
-			document.getElementById("card_games").classList.add("text-white");
-			{% elif view.template_name == 'charts.html' %}
+			// {% if view.template_name == 'home.html'%}
+			// document.getElementById("card_games").classList.replace("bg-light", "bg-dark");
+			// document.getElementById("card_games").classList.add("text-white");
+			// {% elif view.template_name == 'charts.html' %}
 			// updateChartItem(butthole, butthole.options.scale.gridLines, "color", "rgba(233, 236, 239, 0.45)");
-			{% else %}
-			{% endif %}
+			// {% else %}
+			// {% endif %}
 			vein.inject('body', {'color': 'rgb(230,230,241)', 'background-color': 'rgb(35,36,41)'});
 			vein.inject('.card-body', {'background-color': 'rgb(35,36,41)'});
 			vein.inject('.content-section', {'border-top-color': 'rgb(79,80,83)'});
 			vein.inject(['a:hover','a:focus'], {'color': 'rgb(29,155,108)'});
-			vein.inject('.light_bulb', {'background': 'url("/static/img/light-bulb-white.png") no-repeat center scroll', 'background-size': '50px 50px'});
+			vein.inject('.light_bulb', {'background': 'url("static/img/light-bulb-white.png") no-repeat center scroll', 'background-size': '50px 50px'});
 			vein.inject(['.hljs-comment','.hljs-quote'], {'color': 'rgb(153,153,153)'});
 			vein.inject(['.hljs-variable', '.hljs-template-variable','.hljs-tag','.hljs-name','.hljs-selector-id','.hljs-selector-class','.hljs-regexp','.hljs-deletion'],
 			{
@@ -171,12 +194,10 @@ ppg<!DOCTYPE html>
 			vein.inject('.hljs', {'color': 'rgb(204,204,204)', 'background': 'rgb(45,45,45)'});
     		document.getElementById("lights").value = "OFF";
 	  	}else{
-			{% if view.template_name == 'home.html'%}
-			document.getElementById("card_games").classList.replace("bg-dark", "bg-light");
-			document.getElementById("card_games").classList.remove("text-white");
-			{% elif view.template_name == 'charts.html' %}
-			// updateChartItem(butthole, butthole.options.scale.gridLines, "color", "rgba(40, 50, 60, 0.45)");
-			{% else %}{% endif %}
+			// {% if view.template_name == 'home.html'%}
+			// document.getElementById("card_games").classList.replace("bg-dark", "bg-light");
+			// document.getElementById("card_games").classList.remove("text-white");
+			// {% else %}{% endif %}
 			vein.inject('body', {'color': null, 'background-color': null});
 			vein.inject('.card-body', {'background-color': null});
 			vein.inject('.content-section', {'border-top-color': null});
@@ -231,42 +252,59 @@ ppg<!DOCTYPE html>
 
 	</script>
 	<!-- Additional scripts should be added here-->
-		<script src="/static/js/Chart.min.js"></script>
+		<script src="static/js/Chart.min.js"></script>
 		<script>
 		// {% for chart in charts %}
+			var color = Chart.helpers.color;
 			var ctx1 = document.getElementById("ppg");
 			var ppg = new Chart(ctx1, {
 				"type": "bar",
 				"data": {
 					//
-					"labels": ['red','blue','green'],
+					"labels": ['home','away'],
 					"datasets": [{
-						"label": "ppg_label",
-						"data": [12.5, 13.1, 8.9],
+						"label": "Fritz",
+						"backgroundColor": color(window.chartColors.red).alpha(0.5).rgbString(),
+						"borderColor": window.chartColors.red,
+						"borderWidth": 1,
+						"data": [12.74, 13.38],
 						// {% if chart.chart_type == "line" %}
 						// "fill":false,
 						// "borderColor":"rgb(75, 192, 192)",
 						// "lineTension":0.5,
 						// {% elif chart.chart_type == "doughnut" or "polarArea" %}
-						"backgroundColor": ['rgba(75, 192, 192, 0.5)', 'rgba(153,102,255,0.5)', 'rgba(255, 159, 64, 0.5)'],
+						// "backgroundColor": ['rgba(75, 192, 192, 0.5)', 'rgba(153,102,255,0.5)', 'rgba(255, 159, 64, 0.5)'],
 						// {% else %}
-						"borderColor": ['rgb(75, 192, 192)', 'rgb(153,102,255)', 'rgb(255, 159, 64)'],
-						"borderWidth": 1,
 						// {% endif %}
-					}],
+					}, {
+						"label": "Ken",
+						"backgroundColor": color(window.chartColors.blue).alpha(0.5).rgbString(),
+						"borderColor": window.chartColors.blue,
+						"borderWidth": 1,
+						"data": [13.72, 13.85],
+					}
+				],
 				},
 				options: {
+					responsive: true,
 					title: {
 						display: true,
-						position: "bottom",
-						text: "ppg_title",
+						position: "top",
+						text: "Points Per Game",
 					},
 					// {% if chart.chart_type == "bar" %}
 					scales: {
+
 						yAxes: [{
+
 							ticks: {
-								beginAtZero:true
+								beginAtZero:true,
+								max: 20
 							},
+						}],
+						xAxes: [{
+							categoryPercentage: 0.5,
+							barPercentage: 0.9,
 						}]
 					},
 					// {% elif chart.chart_type == "polarArea" %}
@@ -280,15 +318,263 @@ ppg<!DOCTYPE html>
 				},
 
 			});
+			var ctx2 = document.getElementById("december");
+			var dates = [
+				"12/01/2018",
+				"12/04/18",
+				"12/05/18",
+				"12/06/18",
+				"12/07/18",
+				"12/08/18",
+				"12/11/18",
+				"12/12/18",
+				"12/13/18",
+				"12/14/18",
+				"12/15/18",
+				"12/18/18"
+			];
+			var scores = [15,13.67,10.67,13,13,11.67,13.67,11.17,11,14.4,12,10];
+			var data = [];
+			for (i=0;i<dates.length;i++){
+				data.push({x: dates[i], y: scores[i]});
+			}
+			var december = new Chart(ctx2, {
+				"type": "bar",
+				"data": {
+					//NOTE: do margin of victory
+					"labels": dates,
+					"datasets": [{
+						"label": "PPG over time",
+						"backgroundColor": color(window.chartColors.red).alpha(0.5).rgbString(),
+						"borderColor": window.chartColors.red,
+						"data": data,
+						"pointRadius": 0,
+						"type": 'bar',
+						"fill": false,
+						// "lineTension": 0,
+						// "borderWidth": 2,
+						// {% if chart.chart_type == "line" %}
+						// "fill":false,
+						// "borderColor":"rgb(75, 192, 192)",
+						// "lineTension":0.5,
+						// {% elif chart.chart_type == "doughnut" or "polarArea" %}
+						// "backgroundColor": ['rgba(75, 192, 192, 0.5)', 'rgba(153,102,255,0.5)', 'rgba(255, 159, 64, 0.5)'],
+						// {% else %}
+						// {% endif %}
+					// }, {
+					// 	"label": "Ken",
+					// 	"backgroundColor": color(window.chartColors.blue).alpha(0.5).rgbString(),
+					// 	"borderColor": window.chartColors.blue,
+					// 	"borderWidth": 1,
+					// 	"data": [13.72, 13.85],
+					// }
+				}],
+				},
+				options: {
+					scales: {
+						yAxes: [{
+							scaleLabel: {
+								display: true,
+								labelString: 'Points',
+							},
+							ticks: {
+								beginAtZero:true,
+								max: 20
+							},
+						}],
+						xAxes: [{
+							type: 'time',
+							distribution: 'series',
+							ticks: {
+								source: 'labels'
+							}
+						}]
+					},
+				},
+
+			});
 			// <button id="randomizeData">Randomize Data</button>
 			// <button id="addDataset">Add Dataset</button>
 			// <button id="removeDataset">Remove Dataset</button>
 			// <button id="addData">Add Data</button>
 			// <button id="removeData">Remove Data</button>
 		// {% endfor %}
+		var ctx3 = document.getElementById("days");
+		var days = new Chart(ctx3, {
+			"type": "bar",
+			"data": {
+				//
+				"labels": ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+				"datasets": [{
+					"label": "Fritz",
+					"backgroundColor": color(window.chartColors.red).alpha(0.5).rgbString(),
+					"borderColor": window.chartColors.red,
+					"borderWidth": 1,
+					"data": [12.74, 13.38],
+					// {% if chart.chart_type == "line" %}
+					// "fill":false,
+					// "borderColor":"rgb(75, 192, 192)",
+					// "lineTension":0.5,
+					// {% elif chart.chart_type == "doughnut" or "polarArea" %}
+					// "backgroundColor": ['rgba(75, 192, 192, 0.5)', 'rgba(153,102,255,0.5)', 'rgba(255, 159, 64, 0.5)'],
+					// {% else %}
+					// {% endif %}
+				}, {
+					"label": "Ken",
+					"backgroundColor": color(window.chartColors.blue).alpha(0.5).rgbString(),
+					"borderColor": window.chartColors.blue,
+					"borderWidth": 1,
+					"data": [11, 55, 45, 47, 39, 20, 0],
+				}
+			],
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					position: "top",
+					text: "ACTIVITY BY DAY OF WEEK",
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true,
+						},
+					}],
+					// xAxes: [{
+					// 	categoryPercentage: 0.5,
+					// 	barPercentage: 0.9,
+					// }]
+				},
+				tooltips: {
+					mode: 'index',
+					callbacks: {
+						// Use the footer callback to display the sum of the items showing in the tooltip
+						footer: function(tooltipItems, data) {
+							var sum = 0;
+							var wins = 0;
+							var losses = 0;
+
+							tooltipItems.forEach(function(tooltipItem) {
+								wins = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]/2;
+								losses = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]/2;
+								// sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+							});
+							// return 'Sum: ' + sum;
+							return 'Record: ' + wins + '-' + losses;
+						},
+						// labelColor: function(tooltipItem, chart) {
+            //         return {
+            //             borderColor: 'rgb(255, 0, 0)',
+            //             backgroundColor: 'rgb(255, 0, 0)'
+            //         }
+            //     },
+						// labelTextColor:function(tooltipItem, chart){
+            //         return '#543453';
+            // },
+					},
+					footerFontStyle: 'normal'
+
+				},
+				// {% elif chart.chart_type == "polarArea" %}
+				// scale: {
+				// 	gridLines: {
+				// 		color: "rgb(0, 0, 0)"
+				// 	}
+				// },
+				// {% else %}
+				// {% endif %}
+			},
+
+		});
 		</script>
 		<script>$(function () {
 		  $('[data-toggle="tooltip"]').tooltip()
 		})</script>
 </body>
 </html>
+
+
+
+		var config = {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+					label: 'My First dataset',
+					borderColor: window.chartColors.red,
+					backgroundColor: window.chartColors.red,
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor()
+					],
+					fill: false,
+				}, {
+					label: 'My Second dataset',
+					borderColor: window.chartColors.blue,
+					backgroundColor: window.chartColors.blue,
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor()
+					],
+					fill: false,
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Chart.js Line Chart - Custom Information in Tooltip'
+				},
+				tooltips: {
+					mode: 'index',
+					callbacks: {
+						// Use the footer callback to display the sum of the items showing in the tooltip
+						footer: function(tooltipItems, data) {
+							var sum = 0;
+
+							tooltipItems.forEach(function(tooltipItem) {
+								sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+							});
+							return 'Sum: ' + sum;
+						},
+					},
+					footerFontStyle: 'normal'
+				},
+				hover: {
+					mode: 'index',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							show: true,
+							labelString: 'Month'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							show: true,
+							labelString: 'Value'
+						}
+					}]
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
