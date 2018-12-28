@@ -420,6 +420,8 @@
 			// <button id="addData">Add Data</button>
 			// <button id="removeData">Remove Data</button>
 		// {% endfor %}
+		// Define a plugin to provide data labels
+
 		var ctx3 = document.getElementById("days");
 		var days = new Chart(ctx3, {
 			"type": "bar",
@@ -534,9 +536,7 @@
 							var span = 'Record: <span style="'+ style1 +';">'+tooltip.body[0].lines[0]+'</span>';
 							span +=  ' - <span style="'+style2+';">' + tooltip.body[1].lines[0] + '</span>';
 
-							// var span = 'Record: <span class="chartjs-tooltip-key" style="'+ style1 + ';"> ' + tooltip.body[0].lines[0] + '</span>';
-							// span +=  ' - <span class="chartjs-tooltip-key" style="'+ style2 +';">' + tooltip.body[1].lines[0] + '</span>';
-							// var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+
 							innerHtml += '<tr><td>' + span + '</td></tr>';
 
 							innerHtml += '</tbody>'
@@ -576,12 +576,6 @@
 						var positionY = this._chart.canvas.offsetTop;
 						var positionX = this._chart.canvas.offsetLeft;
 						var position = this._chart.canvas.getBoundingClientRect();
-						// console.log("positionY", positionY);
-						// console.log("positionX", positionX);
-						//
-						// console.log("tooltip.caretX", tooltip.caretX);
-						// console.log("tooltip.caretY", tooltip.caretY);
-						// console.log("position", position);
 
 						// Display, position, and set styles for font
 						tooltipEl.style.opacity = 1;
@@ -590,9 +584,7 @@
 
 						tooltipEl.style.left = tooltip.caretX + 'px';
 						tooltipEl.style.top = tooltip.caretY +'px';
-						// tooltipEl.style.width = '150px';
 
-						// tooltipEl.style.left = positionX + tool
 						tooltipEl.style.fontFamily = tooltip._bodyFontFamily;
 						tooltipEl.style.fontSize = tooltip.bodyFontSize + 'px';
 						tooltipEl.style.fontStyle = tooltip._bodyFontStyle;
@@ -601,45 +593,6 @@
 						tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
 					},
 
-					// callbacks: {
-					// 	body: function(tooltipModel, data) {
-					// 		console.log(console.dir(tooltipModel));
-					// 		// wins = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]/2;
-					// 		// losses = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]/2;
-					// 		bodyFontColor: 	'rgb(124,252,0)';
-					// 		// lines: return
-					// 	},
-					// 	// Use the footer callback to display the sum of the items showing in the tooltip
-					// 	footer: function(tooltipItems, data) {
-					// 		var sum = 0;
-					// 		var wins = 0;
-					// 		var losses = 0;
-					//
-					// 		tooltipItems.forEach(function(tooltipItem) {
-					// 			wins = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]/2;
-					// 			losses = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]/2;
-					// 			// sum += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-					// 		});
-					// 		// return 'Sum: ' + sum;
-					// 		return '<span style="color:green;">' + wins + '</span> - <span style="color:red;" >' + losses + '</span>';
-					// 		// return 'Record: ' + wins + ' - ' + losses;
-					// 	},
-					// 	// labelColor: function(tooltipItem, chart) {
-          //   //         return {
-          //   //             borderColor: 'rgb(255, 0, 0)',
-          //   //             backgroundColor: 'rgb(255, 0, 0)'
-          //   //         }
-          //   //     },
-					// 	// labelTextColor:function(tooltipItem, chart){
-          //   //         return '#543453';
-          //   // },
-					//
-					// },
-					// footerFontStyle: 'normal',
-					// yAlign: 'top',
-					// y: 0
-
-					// bodyFontColor: 	'rgb(124,252,0)',
 
 				},
 				// {% elif chart.chart_type == "polarArea" %}
@@ -651,8 +604,41 @@
 				// {% else %}
 				// {% endif %}
 			},
+			plugins: [{
+				afterDatasetsDraw: function(chart) {
+
+						var ctx = chart.ctx;
+
+						chart.data.datasets.forEach(function(dataset, i) {
+							var meta = chart.getDatasetMeta(i);
+							if (!meta.hidden) {
+								meta.data.forEach(function(element, index) {
+									// Draw the text in black, with the specified font
+									ctx.fillStyle = 'rgb(0, 0, 0)';
+
+									var fontSize = 12;
+									var fontStyle = 'normal';
+									var fontFamily = 'Helvetica Neue';
+									ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+
+									// Just naively convert to string for now
+									var dataString = dataset.data[index].toString();
+
+									// Make sure alignment settings are correct
+									ctx.textAlign = 'center';
+									ctx.textBaseline = 'middle';
+
+									var padding = 0;
+									var position = element.tooltipPosition();
+									ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
+								});
+							}
+						});
+					}
+			}],
 
 		});
+
 		</script>
 		<script>$(function () {
 		  $('[data-toggle="tooltip"]').tooltip()
@@ -661,7 +647,7 @@
 </html>
 
 
-
+<!--
 		var config = {
 			type: 'line',
 			data: {
@@ -743,4 +729,4 @@
 		window.onload = function() {
 			var ctx = document.getElementById('canvas').getContext('2d');
 			window.myLine = new Chart(ctx, config);
-		};
+		}; -->
